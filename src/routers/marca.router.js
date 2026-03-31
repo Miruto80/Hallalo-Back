@@ -41,7 +41,7 @@ export default router;
  *           schema:
  *             type: object
  *             properties:
- *               N_marca:
+ *               n_marca:
  *                 type: string
  *                 example: prueba
  *     responses:
