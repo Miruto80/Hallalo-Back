@@ -7,7 +7,7 @@ export const Modelos = sequelize.define('Modelos', {
 }, { tableName: 'Modelos', timestamps: false });
 
 export const associateModelos = () => {
-  const { Inventarios, S_categorias, Atributos, Marcas, Imagenes_Zapatos } = sequelize.models;
+  const { Inventarios, S_categorias, Atributos, Marcas } = sequelize.models;
 
   Modelos.hasMany(Inventarios, { foreignKey: 'FK_Cod_modelo' });
   Inventarios.belongsTo(Modelos, { foreignKey: 'FK_Cod_modelo' });
@@ -21,6 +21,4 @@ export const associateModelos = () => {
   Modelos.belongsToMany(Marcas, { through: 'Marcas_modelo', foreignKey: 'Cod_modelo', otherKey: 'Cod_marca' });
   Marcas.belongsToMany(Modelos, { through: 'Marcas_modelo', foreignKey: 'Cod_marca', otherKey: 'Cod_modelo' });
 
-  Modelos.hasMany(Imagenes_Zapatos, { foreignKey: 'FK_Cod_modelo' });
-  Imagenes_Zapatos.belongsTo(Modelos, { foreignKey: 'FK_Cod_modelo', onDelete: 'CASCADE' });
 };

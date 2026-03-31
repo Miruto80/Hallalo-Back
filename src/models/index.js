@@ -23,7 +23,7 @@ import { Marcas_modelo } from './Marcas_modelo.model.js';
 import { Detalle_entrada } from './Detalle_entrada.model.js';
 import { Detalle_salida } from './Detalle_salida.model.js';
 import { Cargos_permisos } from './Cargos_permisos.model.js';
-import { Imagenes_Zapatos } from './Imagenes_Zapatos.model.js';
+import { Imagenes_Inventario, associateImagenes_Inventario } from './Imagenes_Inventario.model.js';
 
 export const associateAllModels = (models = sequelize.models) => {
   associateAtributos(models);
@@ -36,6 +36,7 @@ export const associateAllModels = (models = sequelize.models) => {
   associateCargos(models);
   associatePermisos(models);
   associateEmpleados(models);
+  associateImagenes_Inventario(models);
 };
 
 export {
@@ -61,5 +62,5 @@ export {
   Detalle_entrada,
   Detalle_salida,
   Cargos_permisos,
-  Imagenes_Zapatos
+  Imagenes_Inventario
 };
