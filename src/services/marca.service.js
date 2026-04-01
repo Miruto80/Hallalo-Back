@@ -27,3 +27,13 @@ export const deleteMarca = async (cod_marca) => {
         throw new Error("Error al eliminar la marca");
     }
 };
+
+export const updateMarca = async (cod_marca, n_marca) => {
+    try {
+        const [updated] = await Marcas.update({ N_marca: n_marca }, { where: { Cod_marca: cod_marca } });
+        return updated;
+    } catch (error) {
+        throw new Error("Error al actualizar la marca");
+    }
+};
+

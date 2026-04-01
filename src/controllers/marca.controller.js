@@ -1,4 +1,4 @@
-import { getMarcas, createMarca, deleteMarca } from "../services/marca.service.js";
+import { getMarcas, createMarca, deleteMarca, updateMarca } from "../services/marca.service.js";
 
 // Controlador para obtener todas las marcas
 export const getMarcasController = async (req, res) => {
@@ -27,6 +27,18 @@ export const deleteMarcaController = async (req, res) => {
     try {
         const deleted = await deleteMarca(cod_marca);
         res.json({ message: "Marca eliminada correctamente", deleted });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+//controlador para actualizar una marca por su código
+export const updateMarcaController = async (req, res) => {
+    const { cod_marca } = req.params;
+    const { n_marca } = req.body;
+    try {
+        const updated = await updateMarca(cod_marca, n_marca);
+        res.json({ message: "Marca actualizada correctamente", updated });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
